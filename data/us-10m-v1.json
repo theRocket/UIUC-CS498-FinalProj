@@ -46126,7 +46126,8 @@
 							]
 						]
 					],
-					"id": "41"
+					"id": "41",
+					"label": "OR"
 				},
 				{
 					"type": "MultiPolygon",
@@ -47736,7 +47737,7 @@
 						]
 					],
 					"id": "53",
-					"foo": "bar"
+					"label": "WA"
 				},
 				{
 					"type": "MultiPolygon",

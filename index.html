@@ -4,10 +4,11 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>RJR CS 498</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/white.css">
+		<link rel="stylesheet" href="css/states.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -22,46 +23,25 @@
 		</script>
 			
 		<script src="https://d3js.org/d3.v4.min.js"></script>
-		<script src="https://d3js.org/topojson.v2.min.js"></script>
-		<style>
+		<script src="https://unpkg.com/topojson-client@3"></script>
 
-			.states :hover {
-			  fill: red;
-			}
-
-			.state-borders {
-			  fill: none;
-			  stroke: #fff;
-			  stroke-width: 0.5px;
-			  stroke-linejoin: round;
-			  stroke-linecap: round;
-			  pointer-events: none;
-			}
-	
-		.counties :hover {
-		  fill: red;
-		}
-
-		.county-borders {
-		  fill: none;
-		  stroke: #fff;
-		  stroke-width: 0.5px;
-		  stroke-linejoin: round;
-		  stroke-linecap: round;
-		  pointer-events: none;
-		}
-
-		</style>
 	</head>
 	<body>
+		<div style="text-align:center;">
 		<h1>Ryan Rickerts</h1>
 		<h2>CS 498 Data Visualization - Final Project</h2>
+	</div>
 		<div class="reveal">
 			<div class="slides">
 				<section>
 					<section>
+						<h3>US Electoral Map</h3>
 						<p>Some text about the State electoral college results</p>
+						<input id="zoomInStates" type="button" value="Zoom To Ohio &amp; Pennsylvania" />
+						
+						<!-- <input id="zoomOutStates" type="button" value="Zoom Out" /> -->
 						<svg id="firstgraph" width="1000" height="800"></svg>
+						
 					</section>
 					<section>More stuff about political coal statement data</section>
 				</section>

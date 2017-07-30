@@ -1,12 +1,14 @@
 [
-		{
-			"WA": [
-				{
-					"winner": "D"
-				},
-				{
-					"votes": 3
-				}
-			]
-		}
+	{
+		"id":53,
+		"name":"WA",
+		"winner": "D",
+		"votes": 12
+	},
+	{
+		"id":41,
+		"name":"OR",
+		"winner": "D",
+		"votes": 7
+	}
 ]
