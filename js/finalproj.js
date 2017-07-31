@@ -96,8 +96,11 @@ function ready(error, mapdata, electdata, coaldata, changedata) {
 		.on("mouseover", function (d) {
 			var state_coal_obj = state_coal_by_id(d.id);
 			if(typeof state_coal_obj !== 'undefined'){ 
-					tt_load = state_coal_obj.State + ":<br/>"+state_coal_obj.chg_no_mines + "% decline in # of mines<br/>"; 
-					tt_load = tt_load + state_coal_obj.chg_no_employ + "% decline in # of employees"
+					tt_load = state_coal_obj.State + ":<br/>";
+					var stc_m = state_coal_obj.chg_no_mines;
+					var stc_e = state_coal_obj.chg_no_employ;
+					tt_load = tt_load + stc_m + "% "+ (stc_m<=0 ? "decline":"increase") + " in # of mines<br/>"; 
+					tt_load = tt_load + stc_e + "% "+ (stc_e<=0 ? "decline":"increase") + " in # of employees";
 				}
 			else {
 					tt_load = "No Coal Employment in this State<br/>";
@@ -188,8 +191,13 @@ function zoomInMidwest() {
 	svg1.transition()
 		.duration(zoomtime)
 		.attr("transform", "translate(" + zoomleft+ "," + zoomdown + ")scale(" + zoomscale + ")");
+
+	//zoom states on slide 2
+	svg3.transition()
+		.duration(zoomtime)
+		.attr("transform", "translate(" + zoomleft+ "," + zoomdown + ")scale(" + zoomscale + ")");
 		
-	//zoom counties on slide 2
+	//zoom counties on slide 3
 	svg2.transition()
 		.duration(zoomtime)
 		.attr("transform", "translate(" + zoomleft+ "," + zoomdown + ")scale(" + zoomscale + ")");
@@ -205,8 +213,13 @@ function zoomOutUS() {
 	svg1.transition()
 		.duration(zoomtime)
 		.attr("transform", "scale(1)");
-		
-	//zoom counties on slide 2
+
+	//zoom states on slide 2
+	svg3.transition()
+		.duration(zoomtime)
+		.attr("transform", "scale(1)");
+				
+	//zoom counties on slide 3
 	svg2.transition()
 		.duration(zoomtime)
 		.attr("transform", "scale(1)");
