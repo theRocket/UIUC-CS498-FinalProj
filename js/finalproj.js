@@ -86,7 +86,12 @@ function ready(error, mapdata, electdata, coaldata) {
 	  .data(topojson.feature(mapdata, mapdata.objects.counties).features)
 	  .enter().append("path")
 		.attr("d", path2)
-		.attr("fill","grey")
+		.attr("fill", function(d) {
+			var county_coal_obj = county_coal_by_id(d.id);
+			if(typeof county_coal_obj !== 'undefined'){  
+					return "orange";}
+					else {return d3.rgb(192, 192, 192);}
+			})
 		.on("mouseover", function (d) {
 			console.log(d.id);
 			var county_coal_obj = county_coal_by_id(d.id);
