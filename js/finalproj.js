@@ -130,7 +130,7 @@ function ready(error, mapdata, electdata, coaldata, changedata) {
 					else {return d3.rgb(192, 192, 192);} //silver
 			})
 		.on("mouseover", function (d) {
-			console.log(d.id);
+			//console.log(d.id);
 			var county_coal_obj = county_coal_by_id(d.id);
 			if(typeof county_coal_obj !== 'undefined'){ 
 					tt_load = county_coal_obj.name+" County, "+county_coal_obj.state+" has:<br/>";
