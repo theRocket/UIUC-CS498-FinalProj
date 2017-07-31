@@ -220,5 +220,89 @@
 		"name":"VA",
 		"winner": "R",
 		"votes": 13
+	},
+	{
+		"id":"39",
+		"name":"OH",
+		"winner": "R",
+		"votes": 18
+	},
+	{
+		"id":"54",
+		"name":"WV",
+		"winner": "R",
+		"votes": 5
+	},
+	{
+		"id":"42",
+		"name":"PA",
+		"winner": "R",
+		"votes": 20
+	},
+	{
+		"id":"36",
+		"name":"NY",
+		"winner": "D",
+		"votes": 29 
+	},
+	{
+		"id":"23",
+		"name":"ME",
+		"winner": "D",
+		"votes": 4
+	},
+	{
+		"id":"33",
+		"name":"NH",
+		"winner": "D",
+		"votes": 4
+	},
+	{
+		"id":"50",
+		"name":"VT",
+		"winner": "D",
+		"votes": 3
+	},
+	{
+		"id":"25",
+		"name":"MA",
+		"winner": "D",
+		"votes": 11
+	},
+	{
+		"id":"44",
+		"name":"RI",
+		"winner": "D",
+		"votes": 4
+	},
+	{
+		"id":"09",
+		"name":"CT",
+		"winner": "D",
+		"votes": 7
+	},
+	{
+		"id":"34",
+		"name":"NJ",
+		"winner": "D",
+		"votes": 14
+	},
+	{
+		"id":"10",
+		"name":"DE",
+		"winner": "D",
+		"votes": 3
+	},
+	{
+		"id":"24",
+		"name":"MD",
+		"winner": "D",
+		"votes": 10
+	},
+	{
+		"id":"11",
+		"name":"DC",
+		"winner": "D",
+		"votes": 3
 	}
 ]
