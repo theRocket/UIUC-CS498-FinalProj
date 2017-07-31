@@ -80,12 +80,12 @@ function ready(error, mapdata, electdata, coaldata, changedata, electchgdata) {
 		.on("mouseover", function (d) {
 			var state_name = state_by_id(d.id);
 			if(typeof state_name !== 'undefined'){ 
-					tt_load = state_name.name + ": " + state_name.votes + " votes"; // Log name property on mouseover
+					tt_load = state_name.name + ": " + state_name.votes + " votes"; 
 				}
 			state_tooltip.html(tt_load);
       })
       .on('mouseout', function() {
-          state_tooltip.html("Select a State to see Electoral Vote Counts")
+				state_tooltip.html("Select a State to see Electoral Vote Counts");
       });
 			
 	d3.select("g.states").append("path")
@@ -121,7 +121,7 @@ function ready(error, mapdata, electdata, coaldata, changedata, electchgdata) {
 			coal_state_tooltip.html(tt_load);
 	    })
 	    .on('mouseout', function() {
-				coal_state_tooltip.html("Select a state to see Coal's economic decline").append("br").append("br");
+				coal_state_tooltip.html("Select a state to see Coal's economic decline");
 	    });
 	
 	// START: functions for coal employment numbers by COUNTY
@@ -200,7 +200,7 @@ function ready(error, mapdata, electdata, coaldata, changedata, electchgdata) {
 							tt_load = tt_load + "a "+(chg_repub*100).toFixed(0) + "% "+((chg_repub<0)?"decrease":"increase"); 
 						}
 					else {
-						tt_load = "No Election Data in this County<br/>";
+						tt_load = "No Election Data yet for this County";
 					}
 					elect_cty_tooltip.html(tt_load);
 		      })
