@@ -35,10 +35,10 @@
 					<h3>The Impact of the Coal Economy on the 2016 U.S. Presidential Election</h3>
 					<div style="text-align:left">
 					<p>This narrative visualization is structured as an interactive slideshow. Each scene is presented with a title at the top of the slide, a U.S. map at the bottom, and a brief introduction to what the graphical data is trying to convey in the middle.</p>
-					<p>Using the arrows at the bottom right of the scene, the viewer can navigate to the next slide, previous slide, or down to get more information on the topic presented. Once on a lower slide, the up arrow brings them back to the map. The arrows are annotated with the slide number and depth, such as 1.2 (slide 1, depth 2)</p>
-						<p>For triggers, I provide a map of the U.S. with the option to hover over for more specific data displayed at the top of the map. It is cleared once the mouse leaves the map. With the click of a button, the viewer may zoom into the region in question or zoom back out to see the entire U.S. The state of the button changes accordingly.</p>
-						<p>For consistency across slides, the buttons, tooltips, and zoom levels of the U.S. map are all the same. Pushing a button on one slide zooms with the same focus on OH and PA across all slides. Thanks, D3!</p>
-						<p>The parameters are the state or county the user points their mouse at which loads the state election and county coal employment data parameters.</p><p>The annotations are the corresponding election or coal employment data from loaded JSON files displayed above the map.</p>
+					<p>Using the arrow buttons at the bottom right of the scene (or the arrow buttons on your keyboard), the viewer can navigate to the next slide, previous slide, or down to get more information on the topic presented. Once on a lower slide, the up arrow brings them back to the map. The arrows are annotated with the slide number and depth, such as 1.2 (slide 1, depth 2). For a consistent experience across slides, the buttons, tooltips, and zoom levels of the U.S. map are all the same. Pushing a button on one slide zooms with the same focus on OH and PA across all slides. Thanks, D3!</p>
+						<p>For triggers, I provide a map of the U.S. with the option to hover over for more specific data displayed at the top of the map. It is cleared once the mouse leaves the map. With the click of a button, the viewer may zoom into the region in question or zoom back out to see the entire U.S. The state of the button changes accordingly.</p><p>The parameters are the state or county the user points their mouse at which loads the state election and county coal employment data parameters. The annotations are the corresponding election or coal employment data from loaded JSON files displayed above the map.</p>
+						<p><b>Sources:</b> The map data join and interaction features are built with <a href="http://d3js.org" target="_blank">D3.js</a>. The SVG path data (in GeoJSON format) is handled by the <a href="https://github.com/topojson/topojson" target="_blank">topojson library</a>. The slideshow features are built with <a href="http://lab.hakim.se/reveal-js/" target="_blank">Reveal.js</a>. The U.S. states and county data was manually prepared (in both JSON and CSV formats) with election figures pulled from <a href="https://townhall.com/election/2016/president/" target="_blank">Townhall.com</a> and coal employment data from <a href="https://www.eia.gov/coal/data.php#production" target="_blank">U.S. Energy Information Administration (eia.gov)</a>.</p>
+						<p><b>Code:</b> You can also <a href="https://github.com/theRocket/UIUC-CS498-FinalProj" target="_blank">view the code on Github</a>
 					</div>
 					<button class="navigate-right enabled" aria-label="next slide">Start the Visualization</button>
 					</section>
@@ -49,7 +49,7 @@
 						<p>Question: How did the prevalance of coal as an employer in the rural economy of <b>Ohio</b> and <b>Pennsylvania</b> impact the 2016 presidential election?</p>
 						<p>Blue indicates a state went Democratic in the electoral college. Red indicates Republican. Navigate down to read more about how large a factor these two critical <b>Swing States</b> were in the U.S. Electoral College.</p>
 					</div>
-						<button class="zoomInBtn">Focus On Midwest Coal Region</button>
+						<button class="zoomInBtn">Focus On Midwest Coal Region</button>&nbsp;<button class="navigate-left enabled" aria-label="previous slide">About the Presentation</button>
 						<br/><br/>
 						<div id="state_votes">Select a State to see Electoral Vote Counts</div>
 						<svg id="firstgraph" width="1000" height="600"></svg>
