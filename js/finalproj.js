@@ -73,7 +73,7 @@ function ready(error, mapdata, electdata, coaldata, changedata) {
 			state_tooltip.html(tt_load);
       })
       .on('mouseout', function() {
-          state_tooltip.html("No State Selected for Vote Counts")
+          state_tooltip.html("Select a State to see Electoral Vote Counts")
       });
 			
 	d3.select("g.states").append("path")
@@ -110,7 +110,7 @@ function ready(error, mapdata, electdata, coaldata, changedata) {
 			coal_state_tooltip.html(tt_load);
 	    })
 	    .on('mouseout', function() {
-	        coal_state_tooltip.html("No State Selected for Coal's Economic Decline Data<br/><br/>")
+				coal_state_tooltip.html("Select a state to see Coal's economic decline").append("br").append("br");
 	    });
 		
 	var county_coal_by_id = function (id) {
@@ -145,7 +145,7 @@ function ready(error, mapdata, electdata, coaldata, changedata) {
 			coal_cty_tooltip.html(tt_load);
       })
       .on('mouseout', function() {
-          coal_cty_tooltip.html("No County Selected for Coal Employment Data<br/><br/>")
+				coal_cty_tooltip.html("Select a County to see Coal Production Data").append("br").append("br");
       });
 		
 	svg2.append("path")
