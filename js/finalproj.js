@@ -6,9 +6,9 @@ var width = 1000,
 	zoomtime = 5000;
 
 
-//tooltip region
-	var tooltip = d3.select("#state_votes");
-	
+//tooltip regions
+	var state_tooltip = d3.select("#state_votes");
+	var coal_cty_tooltip = d3.select("#ctycoal_employ");	
 	/* tried automatically build the second slide
 var slide_about = d3.select("slides.present")
 	.append("slide")
@@ -37,17 +37,17 @@ var path2 = d3.geoPath();
 d3.queue()
 	.defer(d3.json, "https://therocket.github.io/UIUC-CS498-FinalProj/data/us-10m-v1.json")
 	.defer(d3.json, "https://therocket.github.io/UIUC-CS498-FinalProj/data/electoral2016.json")
+	.defer(d3.csv, "https://therocket.github.io/UIUC-CS498-FinalProj/data/coalprod_bycounty.csv")
 	.await(ready);
 
-function ready(error, mapdata, electdata) {
+function ready(error, mapdata, electdata, coaldata) {
   if (error) throw error;
 	
 	var state_by_id = function (id) {
-		var map = d3.map(electdata, function (d) { return d.id});
-		return map.get(id);
+		var state_map = d3.map(electdata, function (d) { return d.id});
+		return state_map.get(id);
 	}
 	
-
 	var state_paths = d3.select("g.states")
 		.selectAll("path")
 		.data(topojson.feature(mapdata, mapdata.objects.states).features)
@@ -66,33 +66,38 @@ function ready(error, mapdata, electdata) {
 			if(typeof state_name !== 'undefined'){ 
 					tt_load = state_name.name + ": " + state_name.votes + " votes"; // Log name property on mouseover
 				}
-			tooltip.html(tt_load);
-		// //playing around with adding svg text a different way
-		// 	svg1.select("g.states")
-		// 		.append("text")
-		// 		.attr("x", width/2)
-		// 		.attr("y", 10)
-		// 		.text(tt_load)
-		// 		.attr("font-family","Verdana")
-		// 		.attr("font-size","14");
+			state_tooltip.html(tt_load);
       })
       .on('mouseout', function() {
-          tooltip.html("No State Selected for Vote Counts")
+          state_tooltip.html("No State Selected for Vote Counts")
       });
 			
 	d3.select("g.states").append("path")
 		.attr("class", "state-borders")
 		.attr("d", path1(topojson.mesh(mapdata, mapdata.objects.states, function(a, b) { return a !== b; })));
 
+	var county_coal_by_id = function (id) {
+			var county_coal_map = d3.map(coaldata, function (d) { return d.id});
+			return county_coal_map.get(id);
+		}
+		
 	var county_paths = d3.select("g.counties")
 	  .selectAll("path")
 	  .data(topojson.feature(mapdata, mapdata.objects.counties).features)
 	  .enter().append("path")
 		.attr("d", path2)
+		.attr("fill","grey")
 		.on("mouseover", function (d) {
 			console.log(d.id);
-		})
-		.attr("fill","grey");
+			var county_coal_obj = county_coal_by_id(d.id);
+			if(typeof county_coal_obj !== 'undefined'){ 
+					tt_load = county_coal_obj.name + ": " + county_coal_obj.total_mines + " mines"; // Log name property on mouseover
+				}
+			coal_cty_tooltip.html(tt_load);
+      })
+      .on('mouseout', function() {
+          coal_cty_tooltip.html("No County Selected for Coal Employment Data")
+      });
 		
 	svg2.append("path")
 	    .attr("class", "county-borders")
@@ -119,7 +124,14 @@ function ready(error, mapdata, electdata) {
 				d3.select(this)
 				//nothing going on here just a placeholder
 			});
-
+		// //playing around with adding svg text a different way
+		// 	svg1.select("g.states")
+		// 		.append("text")
+		// 		.attr("x", width/2)
+		// 		.attr("y", 10)
+		// 		.text(tt_load)
+		// 		.attr("font-family","Verdana")
+		// 		.attr("font-size","14");
 */
 
 //attach zoom event to buttons
