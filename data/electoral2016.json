@@ -1,66 +1,66 @@
 [
 	{
-		"id":53,
+		"id":"53",
 		"name":"WA",
 		"winner": "D",
 		"votes": 12
 	},
 	{
-		"id":41,
+		"id":"41",
 		"name":"OR",
 		"winner": "D",
 		"votes": 7
 	},
 	{
-		"id":06,
+		"id":"06",
 		"name":"CA",
 		"winner": "D",
 		"votes": 55
 	},
 	{
-		"id": 16,
+		"id": "16",
 		"name":"ID",
 		"winner": "R",
 		"votes": 4
 	},
 	{
-		"id": 32,
+		"id": "32",
 		"name":"NV",
 		"winner": "D",
 		"votes": 6
 	},
 	{
-		"id": 30,
+		"id": "30",
 		"name":"MT",
 		"winner": "R",
 		"votes": 3
 	},
 	{
-		"id": 56,
+		"id": "56",
 		"name":"WY",
 		"winner": "R",
 		"votes": 3
 	},
 	{
-		"id": 49,
+		"id": "49",
 		"name":"UT",
 		"winner": "R",
 		"votes": 6
 	},
 	{
-		"id": 04,
+		"id": "04",
 		"name":"AZ",
 		"winner": "R",
 		"votes": 11
 	},
 	{
-		"id": 35,
+		"id": "35",
 		"name":"NM",
 		"winner": "D",
 		"votes": 5
 	},
 	{
-		"id": 08,
+		"id": "08",
 		"name":"CO",
 		"winner": "D",
 		"votes": 9
