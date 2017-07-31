@@ -166,5 +166,59 @@
 		"name":"TN",
 		"winner": "R",
 		"votes": 11
+	},
+	{
+		"id":"28",
+		"name":"MS",
+		"winner": "R",
+		"votes": 6
+	},
+	{
+		"id":"01",
+		"name":"AL",
+		"winner": "R",
+		"votes": 9
+	},
+	{
+		"id":"13",
+		"name":"GA",
+		"winner": "R",
+		"votes": 16
+	},
+	{
+		"id":"02",
+		"name":"AK",
+		"winner": "R",
+		"votes": 3
+	},
+	{
+		"id":"15",
+		"name":"HI",
+		"winner": "D",
+		"votes": 4
+	},
+	{
+		"id":"12",
+		"name":"FL",
+		"winner": "R",
+		"votes": 29
+	},
+	{
+		"id":"45",
+		"name":"SC",
+		"winner": "R",
+		"votes": 9
+	},
+	{
+		"id":"37",
+		"name":"NC",
+		"winner": "R",
+		"votes": 15
+	},
+	{
+		"id":"51",
+		"name":"VA",
+		"winner": "R",
+		"votes": 13
 	}
 ]

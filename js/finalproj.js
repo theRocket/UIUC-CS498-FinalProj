@@ -59,8 +59,8 @@ function ready(error, mapdata, electdata) {
 		.attr("fill", function(d) {
 				var state_obj = state_by_id(d.id);
 				if(typeof state_obj !== 'undefined'){ 
-					if(state_obj.winner == "D"){return "blue";}
-					else {return "red";}
+					if(state_obj.winner == "D"){return d3.rgb(4, 110, 178);}
+					else {return d3.rgb(194, 7, 22);}
 				}
 			})
 		.on("mouseover", function (d) {
