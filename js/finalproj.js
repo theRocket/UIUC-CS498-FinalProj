@@ -116,9 +116,7 @@ function ready(error, mapdata, electdata, coaldata, changedata, electchgdata) {
 					tt_load = tt_load + stc_e + "% "+ (stc_e<=0 ? "decline":"increase") + " in # of employees";
 				}
 			else {
-					tt_load = "No Coal Employment in this State<br/>";
-					tt_load = tt_load + "No decline in # of mines<br/>";
-					tt_load = tt_load + "No decline in # of employees<br/>";
+					tt_load = "No Coal Employment in this State";
 				}
 			coal_state_tooltip.html(tt_load);
 	    })
@@ -152,9 +150,7 @@ function ready(error, mapdata, electdata, coaldata, changedata, electchgdata) {
 					tt_load = tt_load + parseInt(county_coal_obj.total_prod_tons).toLocaleString() + " tons produced"; 
 				}
 			else {
-				tt_load = "No Coal Employment in this County<br/>";
-				tt_load = tt_load + "0 total mines<br/>"; 
-				tt_load = tt_load + "0 tons produced"; 
+				tt_load = "No Coal Employment in this County";
 			}
 			coal_cty_tooltip.html(tt_load);
       })
@@ -199,8 +195,9 @@ function ready(error, mapdata, electdata, coaldata, changedata, electchgdata) {
 					if(typeof county_elect_obj !== 'undefined'){ 
 						var chg_repub = county_elect_obj.change_repub;
 							tt_load = county_elect_obj.cty_name+" County, "+county_elect_obj.state+":<br/>";
-							tt_load = tt_load + "2012 to 2016: from "+parseInt(county_elect_obj.votes_2012).toLocaleString() + " to "+parseInt(county_elect_obj.votes_2016).toLocaleString()+" votes,<br/>"; 
-							tt_load = tt_load + "a "+(chg_repub*100).toFixed(0) + "% "+((chg_repub<0)?"decrease":"increase")+"."; 
+							tt_load = tt_load + "2012: "+parseInt(county_elect_obj.votes_2012).toLocaleString() + " votes<br/>";
+							tt_load = tt_load + "2016: "+parseInt(county_elect_obj.votes_2016).toLocaleString()+" votes<br/>"; 
+							tt_load = tt_load + "a "+(chg_repub*100).toFixed(0) + "% "+((chg_repub<0)?"decrease":"increase"); 
 						}
 					else {
 						tt_load = "No Election Data in this County<br/>";
