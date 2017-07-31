@@ -3,17 +3,22 @@ var width = 1000,
 	zoomleft = -width,
 	zoomdown = -(height/4),
 	zoomscale = 2,
-	zoomtime = 10000;
+	zoomtime = 5000;
 
-//attach zoom event to buttons
-var zoomInBtn = d3.select("#zoomInStates")
-	.on("click", zoomInMidwest);
 
-var tooltip = d3.select('div.slides').append('div')
-	.attr('class', 'hidden tooltip');
-						
-// ** BEGIN SLIDE ONE for STATES data **	
-//select & resize
+//tooltip region
+var tooltip = d3.select("div.slides")
+	.append("div")
+	.attr("class", "hidden tooltip");
+	
+	/* tried automatically build the second slide
+var slide_about = d3.select("slides.present")
+	.append("slide")
+	.append("h1")
+	.html("Testing 3rd slide with D3");
+*/
+
+//start building SVG with map groups
 var svg1 = d3.select("#firstgraph")
 	.attr("width", width)
 	.attr("height", height)
@@ -30,15 +35,13 @@ var svg2 = d3.select("#secondgraph")
 
 var path2 = d3.geoPath();
 
-
+// load all the data
 d3.queue()
 	.defer(d3.json, "https://therocket.github.io/UIUC-CS498-FinalProj/data/us-10m-v1.json")
 	.defer(d3.json, "https://therocket.github.io/UIUC-CS498-FinalProj/data/electoral2016.json")
 	.await(ready);
 
 function ready(error, mapdata, electdata) {
-
-//d3.json("https://therocket.github.io/UIUC-CS498-FinalProj/data/us-10m-v1.json", function(error, us) {
   if (error) throw error;
 	
 	var state_by_id = function (id) {
@@ -53,15 +56,38 @@ function ready(error, mapdata, electdata) {
 		.enter().append("path")
 		.attr("d", path1)
 		.attr("id", function(d) {return d.id;})
+		.attr("fill", function(d) {
+				var state_obj = state_by_id(d.id);
+				if(typeof state_obj !== 'undefined'){ 
+					if(state_obj.winner == "D"){return "blue";}
+					else {return red;}
+				}
+			})
 		.on("mouseover", function (d) {
-			var state_name = state_by_id(d.id); 
-			console.log(state_name); // Log name property on mouseover
+			var state_name = state_by_id(d.id);
+			var log_load = d.id
+			if(typeof state_name !== 'undefined'){ 
+					log_load = log_load + ": " + state_name.name; // Log name property on mouseover
+				}
+			console.log(log_load);
 			});
 			
 	d3.select("g.states").append("path")
 		.attr("class", "state-borders")
 		.attr("d", path1(topojson.mesh(mapdata, mapdata.objects.states, function(a, b) { return a !== b; })));
 
+	var county_paths = d3.select("g.counties")
+	  .selectAll("path")
+	  .data(topojson.feature(mapdata, mapdata.objects.counties).features)
+	  .enter().append("path")
+		.attr("d", path2);
+
+	svg2.append("path")
+	    .attr("class", "county-borders")
+	    .attr("d", path2(topojson.mesh(mapdata, mapdata.objects.counties, function(a, b) { return a !== b; })));
+		}
+//this works but text is laid out oddly on boundary of path - use tooltip instead!
+/*
 	var state_text = d3.select("g.states").append("text")
 		.attr("font-family","Verdana")
 		.attr("font-size","14")
@@ -76,9 +102,7 @@ function ready(error, mapdata, electdata) {
 				//nothing going on here just a placeholder
 			});
 
-
-	// ** BEGIN SLIDE TWO for COUNTIES MINING data **
-
+//playing around with adding svg text a different way
 	svg2.select("g.counties")
 		.selectAll(".state_data")
 		.data(electdata)
@@ -88,22 +112,12 @@ function ready(error, mapdata, electdata) {
 		.attr("y", 10)
 		.text("Hello!");
 }
+*/
 
-d3.json("https://d3js.org/us-10m.v1.json", function(error, us) {
-  if (error) throw error;
-
-  svg2.append("g")
-    .attr("class", "counties")
-    .selectAll("path")
-    .data(topojson.feature(us, us.objects.counties).features)
-    .enter().append("path")
-      .attr("d", path2);
-
-  svg2.append("path")
-      .attr("class", "county-borders")
-      .attr("d", path2(topojson.mesh(us, us.objects.counties, function(a, b) { return a !== b; })));
-});
-
+//attach zoom event to buttons
+var zoomInBtn = d3.selectAll("button.zoomInBtn")
+	.on("click", zoomInMidwest);
+		
 function zoomInMidwest() {
 	svg1.transition()
 		.duration(zoomtime)
@@ -113,6 +127,25 @@ function zoomInMidwest() {
 	svg2.transition()
 		.duration(zoomtime)
 		.attr("transform", "translate(" + zoomleft+ "," + zoomdown + ")scale(" + zoomscale + ")");
+	
+	d3.selectAll("button.zoomInBtn")
+		.html("Zoom Out")
+		.on("click", zoomOutUS);
 		
-	zoomInBtn.style("opacity", 0); //hide the button once zoomed
+	//zoomInBtn.style("opacity", 0); //hide the button once zoomed
+}
+
+function zoomOutUS() {
+	svg1.transition()
+		.duration(zoomtime)
+		.attr("transform", "scale(1)");
+		
+	//zoom counties on slide 2
+	svg2.transition()
+		.duration(zoomtime)
+		.attr("transform", "scale(1)");
+	
+	d3.selectAll("button.zoomInBtn")
+		.html("Zoom Into Midwest Coal Region")
+		.on("click", zoomInMidwest);
 }

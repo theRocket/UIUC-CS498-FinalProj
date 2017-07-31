@@ -18,7 +18,7 @@
 	}
 
 .counties :hover {
-  fill: red;
+  fill: gray;
 }
 
 .county-borders {
