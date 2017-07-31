@@ -1,5 +1,5 @@
 var width = 1000,
-	height = 800,
+	height = 600,
 	zoomleft = -width,
 	zoomdown = -(height/4),
 	zoomscale = 2,
@@ -77,7 +77,7 @@ function ready(error, mapdata, electdata) {
 		// 		.attr("font-size","14");
       })
       .on('mouseout', function() {
-          tooltip.html("Hover for Electoral Vote Counts")
+          tooltip.html("No State Selected for Vote Counts")
       });
 			
 	d3.select("g.states").append("path")
@@ -127,7 +127,7 @@ function zoomInMidwest() {
 		.attr("transform", "translate(" + zoomleft+ "," + zoomdown + ")scale(" + zoomscale + ")");
 	
 	d3.selectAll("button.zoomInBtn")
-		.html("Zoom Out")
+		.html("Zoom Back Out")
 		.on("click", zoomOutUS);
 		
 	//zoomInBtn.style("opacity", 0); //hide the button once zoomed
@@ -144,6 +144,6 @@ function zoomOutUS() {
 		.attr("transform", "scale(1)");
 	
 	d3.selectAll("button.zoomInBtn")
-		.html("Zoom Into Midwest Coal Region")
+		.html("Focus On Midwest Coal Region")
 		.on("click", zoomInMidwest);
 }
