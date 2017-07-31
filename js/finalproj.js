@@ -1,8 +1,8 @@
 var width = 1000,
 	height = 600,
-	zoomleft = -width,
-	zoomdown = -(height/4),
-	zoomscale = 2,
+	zoomleft = -width - 550,
+	zoomdown = -(height/4) - 400,
+	zoomscale = 3,
 	zoomtime = 5000;
 
 
