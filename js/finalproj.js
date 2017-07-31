@@ -138,7 +138,7 @@ function ready(error, mapdata, electdata, coaldata, changedata, electchgdata) {
 		.attr("fill", function(d) {
 			var county_coal_obj = county_coal_by_id(d.id);
 			if(typeof county_coal_obj !== 'undefined'){  
-					return "orange";}
+					return "brown";}
 					else {return d3.rgb(192, 192, 192);} //silver
 			})
 		.on("mouseover", function (d) {
@@ -175,10 +175,14 @@ function ready(error, mapdata, electdata, coaldata, changedata, electchgdata) {
 			  .enter().append("path")
 				.attr("d", path2)
 				.attr("fill", function(d) {
-					var county_elect_obj = county_elect_by_id(d.id);
-					if(typeof county_elect_obj !== 'undefined'){  
-							return "orange";}
-							else {return d3.rgb(192, 192, 192);} //silver
+					//color brown if in the coal employment data, else orange
+					var county_coal_obj = county_coal_by_id(d.id);
+					if(typeof county_coal_obj !== 'undefined'){return "brown";}
+					else{
+						var county_elect_obj = county_elect_by_id(d.id);
+						if(typeof county_elect_obj !== 'undefined'){  return "orange";}
+								else {return d3.rgb(192, 192, 192);} //silver
+							}
 					})
 				.on("mouseover", function (d) {
 					//console.log(d.id);
