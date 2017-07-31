@@ -91,12 +91,14 @@ function ready(error, mapdata, electdata, coaldata) {
 			console.log(d.id);
 			var county_coal_obj = county_coal_by_id(d.id);
 			if(typeof county_coal_obj !== 'undefined'){ 
-					tt_load = county_coal_obj.name + ": " + county_coal_obj.total_mines + " mines"; // Log name property on mouseover
+					tt_load = county_coal_obj.state+": "+county_coal_obj.name + " County has:<br/>";
+					tt_load = tt_load + county_coal_obj.total_mines + " total mines<br/>"; 
+					tt_load = tt_load + county_coal_obj.total_prod_tons + " tons produced"; 
 				}
 			coal_cty_tooltip.html(tt_load);
       })
       .on('mouseout', function() {
-          coal_cty_tooltip.html("No County Selected for Coal Employment Data")
+          coal_cty_tooltip.html("No County Selected for Coal Employment Data<br/><br/>")
       });
 		
 	svg2.append("path")
