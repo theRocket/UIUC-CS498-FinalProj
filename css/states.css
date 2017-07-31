@@ -13,6 +13,11 @@
 		font-size: 14px;
 	}
 	
+	#statecoal_employ {
+		font-weight: bold;
+		font-size: 14px;
+	}
+	
 	.state-borders {
 	  fill: none;
 	  stroke: #000;

@@ -8,16 +8,17 @@ var width = 1000,
 
 //tooltip regions
 	var state_tooltip = d3.select("#state_votes");
-	var coal_cty_tooltip = d3.select("#ctycoal_employ");	
-	/* tried automatically build the second slide
-var slide_about = d3.select("slides.present")
-	.append("slide")
-	.append("h1")
-	.html("Testing 3rd slide with D3");
-*/
+	var coal_cty_tooltip = d3.select("#ctycoal_employ");
+	var coal_state_tooltip = d3.select("#statecoal_employ");	
 
 //start building SVG with map groups
 var svg1 = d3.select("#firstgraph")
+	.attr("width", width)
+	.attr("height", height)
+	.append("g")
+	.attr("class", "states");
+
+var svg3 = d3.select("#thirdgraph")
 	.attr("width", width)
 	.attr("height", height)
 	.append("g")
@@ -38,9 +39,10 @@ d3.queue()
 	.defer(d3.json, "https://therocket.github.io/UIUC-CS498-FinalProj/data/us-10m-v1.json")
 	.defer(d3.json, "https://therocket.github.io/UIUC-CS498-FinalProj/data/electoral2016.json")
 	.defer(d3.csv, "https://therocket.github.io/UIUC-CS498-FinalProj/data/coalprod_bycounty.csv")
+	.defer(d3.csv, "https://therocket.github.io/UIUC-CS498-FinalProj/data/coalprod_change2015.csv")
 	.await(ready);
 
-function ready(error, mapdata, electdata, coaldata) {
+function ready(error, mapdata, electdata, coaldata, changedata) {
   if (error) throw error;
 	
 	var state_by_id = function (id) {
@@ -48,7 +50,7 @@ function ready(error, mapdata, electdata, coaldata) {
 		return state_map.get(id);
 	}
 	
-	var state_paths = d3.select("g.states")
+	var state_paths = d3.selectAll("g.states")
 		.selectAll("path")
 		.data(topojson.feature(mapdata, mapdata.objects.states).features)
 		.enter().append("path")
@@ -60,7 +62,9 @@ function ready(error, mapdata, electdata, coaldata) {
 					if(state_obj.winner == "D"){return d3.rgb(4, 110, 178);}
 					else {return d3.rgb(194, 7, 22);}
 				}
-			})
+			});
+			
+		d3.select("#firstgraph").selectAll("path").data(topojson.feature(mapdata, mapdata.objects.states).features)
 		.on("mouseover", function (d) {
 			var state_name = state_by_id(d.id);
 			if(typeof state_name !== 'undefined'){ 
@@ -76,6 +80,36 @@ function ready(error, mapdata, electdata, coaldata) {
 		.attr("class", "state-borders")
 		.attr("d", path1(topojson.mesh(mapdata, mapdata.objects.states, function(a, b) { return a !== b; })));
 
+	var state_coal_by_id = function (id) {
+			var state_coal_map = d3.map(changedata, function (d) { return d.id});
+			return state_coal_map.get(id);
+		}
+		
+		//it's actually the 2nd graph because I swapped the slide order
+	d3.select("#thirdgraph").selectAll("path").data(topojson.feature(mapdata, mapdata.objects.states).features)
+		//color those states with coal employment data with an extra black border
+		.attr("stroke", function(d)	{
+				var state_coal_obj = state_coal_by_id(d.id);
+				if(typeof state_coal_obj !== 'undefined'){ return "black";}
+			})
+			//tooltip for state employment data
+		.on("mouseover", function (d) {
+			var state_coal_obj = state_coal_by_id(d.id);
+			if(typeof state_coal_obj !== 'undefined'){ 
+					tt_load = state_coal_obj.State + ":<br/>"+state_coal_obj.chg_no_mines + "% decline in # of mines<br/>"; 
+					tt_load = tt_load + state_coal_obj.chg_no_employ + "% decline in # of employees"
+				}
+			else {
+					tt_load = "No Coal Employment in this State<br/>";
+					tt_load = tt_load + "No decline in # of mines<br/>";
+					tt_load = tt_load + "No decline in # of employees<br/>";
+				}
+			coal_state_tooltip.html(tt_load);
+	    })
+	    .on('mouseout', function() {
+	        coal_state_tooltip.html("No State Selected for Coal's Economic Decline Data<br/><br/>")
+	    });
+		
 	var county_coal_by_id = function (id) {
 			var county_coal_map = d3.map(coaldata, function (d) { return d.id});
 			return county_coal_map.get(id);
@@ -90,7 +124,7 @@ function ready(error, mapdata, electdata, coaldata) {
 			var county_coal_obj = county_coal_by_id(d.id);
 			if(typeof county_coal_obj !== 'undefined'){  
 					return "orange";}
-					else {return d3.rgb(192, 192, 192);}
+					else {return d3.rgb(192, 192, 192);} //silver
 			})
 		.on("mouseover", function (d) {
 			console.log(d.id);
