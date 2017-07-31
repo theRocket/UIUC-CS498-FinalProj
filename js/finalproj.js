@@ -88,11 +88,21 @@ function ready(error, mapdata, electdata) {
 	  .selectAll("path")
 	  .data(topojson.feature(mapdata, mapdata.objects.counties).features)
 	  .enter().append("path")
-		.attr("d", path2);
-
+		.attr("d", path2)
+		.on("mouseover", function (d) {
+			console.log(d.id);
+		})
+		.attr("fill","grey");
+		
 	svg2.append("path")
 	    .attr("class", "county-borders")
 	    .attr("d", path2(topojson.mesh(mapdata, mapdata.objects.counties, function(a, b) { return a !== b; })));
+			
+		d3.select("g.counties").append("path")
+			.attr("class", "state-borders")
+			.attr("d", path2(topojson.mesh(mapdata, mapdata.objects.states, function(a, b) { return a !== b; })))
+			.attr("stroke","black");
+	
 		}
 //this works but text is laid out oddly on boundary of path - use tooltip instead!
 /*
