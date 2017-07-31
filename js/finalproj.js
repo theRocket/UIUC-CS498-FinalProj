@@ -60,7 +60,7 @@ function ready(error, mapdata, electdata) {
 				var state_obj = state_by_id(d.id);
 				if(typeof state_obj !== 'undefined'){ 
 					if(state_obj.winner == "D"){return "blue";}
-					else {return red;}
+					else {return "red";}
 				}
 			})
 		.on("mouseover", function (d) {

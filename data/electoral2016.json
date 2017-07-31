@@ -64,6 +64,107 @@
 		"name":"CO",
 		"winner": "D",
 		"votes": 9
+	},
+	{
+		"id":"38",
+		"name":"ND",
+		"winner": "R",
+		"votes": 3
+	},
+	{
+		"id":"46",
+		"name":"SD",
+		"winner": "R",
+		"votes": 3
+	},
+	{
+		"id":"31",
+		"name":"NE",
+		"winner": "R",
+		"votes": 5
+	},
+	{
+		"id":"20",
+		"name":"KS",
+		"winner": "R",
+		"votes": 6
+	},
+	{
+		"id":"40",
+		"name":"OK",
+		"winner": "R",
+		"votes": 7
+	},
+	{
+		"id":"48",
+		"name":"TX",
+		"winner": "R",
+		"votes": 38
+	},
+	{
+		"id":"22",
+		"name":"LA",
+		"winner": "R",
+		"votes": 8
+	},
+	{
+		"id":"05",
+		"name":"AR",
+		"winner": "R",
+		"votes": 6
+	},
+	{
+		"id":"29",
+		"name":"MO",
+		"winner": "R",
+		"votes": 10
+	},
+	{
+		"id":"19",
+		"name":"IA",
+		"winner": "R",
+		"votes": 6
+	},
+	{
+		"id":"27",
+		"name":"MN",
+		"winner": "D",
+		"votes": 10
+	},
+	{
+		"id":"55",
+		"name":"WI",
+		"winner": "R",
+		"votes": 10
+	},
+	{
+		"id":"26",
+		"name":"MI",
+		"winner": "R",
+		"votes": 16
+	},
+	{
+		"id":"17",
+		"name":"IL",
+		"winner": "D",
+		"votes": 20
+	},
+	{
+		"id":"18",
+		"name":"IN",
+		"winner": "R",
+		"votes": 11
+	},
+	{
+		"id":"21",
+		"name":"KY",
+		"winner": "R",
+		"votes": 8
+	},
+	{
+		"id":"47",
+		"name":"TN",
+		"winner": "R",
+		"votes": 11
 	}
-	
 ]
