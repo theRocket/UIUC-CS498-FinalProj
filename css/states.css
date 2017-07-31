@@ -1,13 +1,13 @@
-	.redstate {
-		fill: red;
-	}
-	.bluestate {
-		fill: blue;
-	}
-	.states :hover {
-	  fill: gray;
-	}
 
+	.states :hover {
+	  fill: orange;
+	}
+	
+	#state_votes {
+		font-weight: bold;
+		font-size: 14px;
+	}
+	
 	.state-borders {
 	  fill: none;
 	  stroke: #fff;
@@ -18,7 +18,7 @@
 	}
 
 .counties :hover {
-  fill: gray;
+  fill: orange;
 }
 
 .county-borders {

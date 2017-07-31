@@ -7,9 +7,7 @@ var width = 1000,
 
 
 //tooltip region
-var tooltip = d3.select("div.slides")
-	.append("div")
-	.attr("class", "hidden tooltip");
+	var tooltip = d3.select("#state_votes");
 	
 	/* tried automatically build the second slide
 var slide_about = d3.select("slides.present")
@@ -65,12 +63,22 @@ function ready(error, mapdata, electdata) {
 			})
 		.on("mouseover", function (d) {
 			var state_name = state_by_id(d.id);
-			var log_load = d.id
 			if(typeof state_name !== 'undefined'){ 
-					log_load = log_load + ": " + state_name.name; // Log name property on mouseover
+					tt_load = state_name.name + ": " + state_name.votes + " votes"; // Log name property on mouseover
 				}
-			console.log(log_load);
-			});
+			tooltip.html(tt_load);
+		// //playing around with adding svg text a different way
+		// 	svg1.select("g.states")
+		// 		.append("text")
+		// 		.attr("x", width/2)
+		// 		.attr("y", 10)
+		// 		.text(tt_load)
+		// 		.attr("font-family","Verdana")
+		// 		.attr("font-size","14");
+      })
+      .on('mouseout', function() {
+          tooltip.html("Hover for Electoral Vote Counts")
+      });
 			
 	d3.select("g.states").append("path")
 		.attr("class", "state-borders")
@@ -102,16 +110,6 @@ function ready(error, mapdata, electdata) {
 				//nothing going on here just a placeholder
 			});
 
-//playing around with adding svg text a different way
-	svg2.select("g.counties")
-		.selectAll(".state_data")
-		.data(electdata)
-		.enter().append("text")
-		.attr("class","state-data")
-		.attr("x", 10)
-		.attr("y", 10)
-		.text("Hello!");
-}
 */
 
 //attach zoom event to buttons
