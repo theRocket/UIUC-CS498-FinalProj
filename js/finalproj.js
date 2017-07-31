@@ -161,16 +161,7 @@ function ready(error, mapdata, electdata, coaldata, changedata, electchgdata) {
 	svg2.append("path")
 	    .attr("class", "county-borders")
 	    .attr("d", path2(topojson.mesh(mapdata, mapdata.objects.counties, function(a, b) { return a !== b; })));
-	
-	svg4.append("path")
-	    .attr("class", "county-borders")
-	    .attr("d", path2(topojson.mesh(mapdata, mapdata.objects.counties, function(a, b) { return a !== b; })));
 			
-	//get all county groups to add state borders
-		d3.selectAll("g.counties").append("path")
-			.attr("class", "state-borders")
-			.attr("d", path2(topojson.mesh(mapdata, mapdata.objects.states, function(a, b) { return a !== b; })))
-			.attr("stroke","black");
 			
 		// START: functions for 2012-2016 ELECTION numbers by COUNTY
 			var county_elect_by_id = function (id) {
@@ -207,6 +198,17 @@ function ready(error, mapdata, electdata, coaldata, changedata, electchgdata) {
 		      .on('mouseout', function() {
 						elect_cty_tooltip.html("Select a County to see Election Data");
 		      });
+					
+			
+			svg4.append("path")
+			    .attr("class", "county-borders")
+			    .attr("d", path2(topojson.mesh(mapdata, mapdata.objects.counties, function(a, b) { return a !== b; })));
+					
+			//get all county groups to add state borders
+				d3.selectAll("g.counties").append("path")
+					.attr("class", "state-borders")
+					.attr("d", path2(topojson.mesh(mapdata, mapdata.objects.states, function(a, b) { return a !== b; })))
+					.attr("stroke","black");
 					
 				//zoom counties on slide 4 (automatic since no other state data yet)
 				svg4.transition()
