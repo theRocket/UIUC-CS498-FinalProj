@@ -46,11 +46,11 @@ var path2 = d3.geoPath();
 
 // load all the data
 d3.queue()
-	.defer(d3.json, "https://therocket.github.io/UIUC-CS498-FinalProj/data/us-10m-v1.json")
-	.defer(d3.json, "https://therocket.github.io/UIUC-CS498-FinalProj/data/electoral2016.json")
-	.defer(d3.csv, "https://therocket.github.io/UIUC-CS498-FinalProj/data/coalprod_bycounty.csv")
-	.defer(d3.csv, "https://therocket.github.io/UIUC-CS498-FinalProj/data/coalprod_change2015.csv")
-	.defer(d3.csv, "https://therocket.github.io/UIUC-CS498-FinalProj/data/countyelectdiffs_paoh.csv")
+	.defer(d3.json, "https://ryanrickerts.dev/UIUC-CS498-FinalProj/data/us-10m-v1.json")
+	.defer(d3.json, "https://ryanrickerts.dev/UIUC-CS498-FinalProj/data/electoral2016.json")
+	.defer(d3.csv, "https://ryanrickerts.dev/UIUC-CS498-FinalProj/data/coalprod_bycounty.csv")
+	.defer(d3.csv, "https://ryanrickerts.dev/UIUC-CS498-FinalProj/data/coalprod_change2015.csv")
+	.defer(d3.csv, "https://ryanrickerts.dev/UIUC-CS498-FinalProj/data/countyelectdiffs_paoh.csv")
 	.await(ready);
 
 function ready(error, mapdata, electdata, coaldata, changedata, electchgdata) {
